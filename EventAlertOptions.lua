@@ -84,6 +84,39 @@ function EventAlert_Options_ToggleCustomEventsFrame()
     end
 end
 
+function EventAlert_Options_ResetEventItemsToDefaultFrame()
+	-- reset WTF folder to nil
+	EA_Items = {}
+	
+	-- reset in-game cache to nil
+	EA_Items = nil
+	
+	EventAlert_LoadSpellArray()
+	print("Event Items reset to default.")
+end
+
+
+function EventAlert_Options_ResetAltEventItemsToDefaultFrame()
+	-- reset WTF folder to nil
+	EA_AltItems = {}
+	
+	-- reset in-game cache to nil
+	EA_AltItems = nil
+	
+	EventAlert_LoadSpellArray()
+	print("Alternate Event Items reset to default.")
+end
+
+function EventAlert_Options_ResetCustomEventItemsToDefaultFrame()
+	-- reset WTF folder to nil
+	EA_CustomItems = {}
+	
+	-- reset in-game cache to nil
+	EA_CustomItems = nil
+	
+	EventAlert_LoadSpellArray()
+	print("Deleted Custom Event Items.")
+end
 
 
 function EventAlert_Options_AlertSoundSelect_OnLoad()

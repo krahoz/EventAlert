@@ -5,7 +5,7 @@
     <Frame name="EA_Options_Frame" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent" enableKeyboard="true">
 
         <Size>
-            <AbsDimension x="300" y="475"/>
+            <AbsDimension x="300" y="550"/>
         </Size>
 
         <Anchors>
@@ -339,10 +339,10 @@
             </CheckButton>
 
             <Button name="$parent_ToggleClassEvents" inherits="OptionsButtonTemplate" text="Show/Hide Class Alerts">
-                <Anchors>
+               <Anchors>
                     <Anchor point="BOTTOM">
                         <Offset>
-                            <AbsDimension x="0" y="100"/>
+                            <AbsDimension x="0" y="178"/>
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -361,12 +361,12 @@
                 <Anchors>
                     <Anchor point="BOTTOM">
                         <Offset>
-                            <AbsDimension x="0" y="78"/>
+                            <AbsDimension x="0" y="156"/>
                         </Offset>
                     </Anchor>
                 </Anchors>
                 <Size>
-		            <AbsDimension x="180" y="21"/>
+		            <AbsDimension x="175" y="21"/>
         		</Size>
                 <Scripts>
                     <OnClick>
@@ -376,11 +376,68 @@
                 </Scripts>
             </Button>
 
+            <Button name="$parent_ResetEventItemsToDefault" inherits="OptionsButtonTemplate" text="Reset EventItems Default">
+                <Anchors>
+                    <Anchor point="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="112"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Size>
+		            <AbsDimension x="175" y="21"/>
+        		</Size>
+                <Scripts>
+                    <OnClick>
+                        PlaySound("gsTitleOptionOK");
+                        EventAlert_Options_ResetEventItemsToDefaultFrame();
+                    </OnClick>
+                </Scripts>
+            </Button>
+
+            <Button name="$parent_ResetAltEventItemsToDefault" inherits="OptionsButtonTemplate" text="Reset Alternate EventItems Default">
+                <Anchors>
+                    <Anchor point="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="90"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Size>
+		            <AbsDimension x="210" y="21"/>
+        		</Size>
+                <Scripts>
+                    <OnClick>
+                        PlaySound("gsTitleOptionOK");
+                        EventAlert_Options_ResetAltEventItemsToDefaultFrame();
+                    </OnClick>
+                </Scripts>
+            </Button>
+
+            <Button name="$parent_ResetCustomEventItemsToDefault" inherits="OptionsButtonTemplate" text="Delete Custom EventItems">
+                <Anchors>
+                    <Anchor point="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="68"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Size>
+		            <AbsDimension x="185" y="21"/>
+        		</Size>
+                <Scripts>
+                    <OnClick>
+                        PlaySound("gsTitleOptionOK");
+                        EventAlert_Options_ResetCustomEventItemsToDefaultFrame();
+                    </OnClick>
+                </Scripts>
+            </Button>
+
         	<CheckButton name="$parent_ShowSpellInfo" inherits="OptionsCheckButtonTemplate">
                 <Anchors>
-                    <Anchor point="TOPLEFT" relativeTo="$parent_ToggleCustomEvents" relativePoint="BOTTOMLEFT">
+                    <Anchor point="TOPLEFT" relativeTo="$parent_ResetCustomEventItemsToDefault" relativePoint="BOTTOMLEFT">
                         <Offset>
-                            <AbsDimension x="0" y="0"/>
+                            <AbsDimension x="0" y="-20"/>
                         </Offset>
                     </Anchor>
                 </Anchors>
