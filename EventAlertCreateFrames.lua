@@ -1,18 +1,17 @@
 function EventAlert_CreateFrames()
-
+	
 -- Create anchor frames used for mod customization.
+		
+		local anchorFrameName = "EA_Anchor_Frame";
+		
+		if (EA_Config.AllowESC == true) then
+			tinsert(UISpecialFrames,anchorFrameName);
+		end
+		local eaaf = CreateFrame("FRAME", anchorFrameName, UIParent);
 
-        local anchorFrameName = "EA_Anchor_Frame";
-
-        if (EA_Config.AllowESC == true) then
-	        tinsert(UISpecialFrames,anchorFrameName);
-        end
-
-        local eaaf = CreateFrame("FRAME", anchorFrameName, UIParent);
-
-        eaaf:SetFrameStrata("DIALOG");
-        eaaf:ClearAllPoints();
-        eaaf:SetPoint(EA_Position.Anchor, UIParent, EA_Position.xLoc, EA_Position.yLoc);
+		eaaf:SetFrameStrata("DIALOG");
+		eaaf:ClearAllPoints();
+		eaaf:SetPoint(EA_Position.Anchor, UIParent, EA_Position.xLoc, EA_Position.yLoc);
 
 		eaaf.spellName = eaaf:CreateFontString(anchorFrameName.."_Name","OVERLAY");
 		eaaf.spellName:SetFontObject(ChatFontNormal);
@@ -22,76 +21,83 @@ function EventAlert_CreateFrames()
 		eaaf.spellTimer:SetFontObject(ChatFontNormal);
 		eaaf.spellTimer:SetPoint("TOP", 0, 15);
 		
+		-- TODO implement SpellCounter - it was not working before and was generating errors
+		--[[
 		eaaf.spellCounter = eaaf:CreateFontString(anchorFrameName.."_Counter","OVERLAY");
 		eaaf.spellCounter:SetFontObject(ChatFontNormal);
 		-- eaaf.spellCounter:SetPoint("CENTER", 0, 0);
 		eaaf.spellCounter:SetPoint("CENTER", 15, 0);
+		]]
 
-  		eaaf:SetBackdrop({bgFile = "Interface/Icons/Spell_Nature_Polymorph_Cow"});
+		eaaf:SetBackdrop({bgFile = "Interface/Icons/Spell_Nature_Polymorph_Cow"});
 
 		eaaf:SetMovable(true)
 		eaaf:EnableMouse(true)
 		eaaf:SetScript("OnMouseDown",function()
 			if (EA_Config.LockFrame == true) then
-	    		DEFAULT_CHAT_FRAME:AddMessage("EventAlert: You must unlock the alert frame in order to move it or reset it's position.")
+				DEFAULT_CHAT_FRAME:AddMessage("EventAlert: You must unlock the alert frame in order to move it or reset it's position.")
 			else
-        	    eaaf:StartMoving();
-            end
+				eaaf:StartMoving();
+			end
 		end)
 		eaaf:SetScript("OnMouseUp",function()
 			eaaf:StopMovingOrSizing();
 
-            local EA_point, _, EA_relativePoint, EA_xOfs, EA_yOfs = EA_Anchor_Frame:GetPoint();
+			local EA_point, _, EA_relativePoint, EA_xOfs, EA_yOfs = EA_Anchor_Frame:GetPoint();
 
-	        EA_Position.Anchor = EA_point;
-            EA_Position.relativePoint = EA_relativePoint;
-            EA_Position.xLoc = EA_xOfs;
+			EA_Position.Anchor = EA_point;
+			EA_Position.relativePoint = EA_relativePoint;
+			EA_Position.xLoc = EA_xOfs;
 			EA_Position.yLoc = EA_yOfs;
 		end)
 
-        local eaaf2 = CreateFrame("FRAME", "EA_Anchor_Frame2", UIParent);
-        eaaf2:SetFrameStrata("DIALOG");
-        eaaf2:ClearAllPoints();
-        eaaf2:SetPoint("CENTER", EA_Anchor_Frame, 100+EA_Position.xOffset, 0+EA_Position.yOffset);
-  		eaaf2:SetBackdrop({bgFile = "Interface/Icons/Spell_Nature_Polymorph_Cow"});
+		local eaaf2 = CreateFrame("FRAME", anchorFrameName.."2", UIParent);
+		eaaf2:SetFrameStrata("DIALOG");
+		eaaf2:ClearAllPoints();
+		eaaf2:SetPoint("CENTER", EA_Anchor_Frame, 100+EA_Position.xOffset, 0+EA_Position.yOffset);
+		eaaf2:SetBackdrop({bgFile = "Interface/Icons/Spell_Nature_Polymorph_Cow"});
 
-        eaaf2.spellName = eaaf2:CreateFontString("EA_Anchor_Frame2_Name","OVERLAY");
+		eaaf2.spellName = eaaf2:CreateFontString(anchorFrameName.."2_Name","OVERLAY");
 		eaaf2.spellName:SetFontObject(ChatFontNormal);
 		eaaf2.spellName:SetPoint("BOTTOM", 0, -15);
 
-        eaaf2.spellTimer = eaaf2:CreateFontString("EA_Anchor_Frame2_Timer","OVERLAY");
+		eaaf2.spellTimer = eaaf2:CreateFontString(anchorFrameName.."2_Timer","OVERLAY");
 		eaaf2.spellTimer:SetFontObject(ChatFontNormal);
 		eaaf2.spellTimer:SetPoint("TOP", 0, 15);
 		
-		eaaf2.spellCounter = eaaf:CreateFontString("EA_Anchor_Frame2_Counter","OVERLAY");
+		-- TODO implement SpellCounter - it was not working before and was generating errors
+		--[[
+		eaaf2.spellCounter = eaaf:CreateFontString(anchorFrameName.."2_Counter","OVERLAY");
 		eaaf2.spellCounter:SetFontObject(ChatFontNormal);
 		-- eaaf2.spellCounter:SetPoint("CENTER", 0, 0);
 		eaaf2.spellCounter:SetPoint("CENTER", 15, 0);
+		]]
 
+		local eaaf3 = CreateFrame("FRAME", anchorFrameName.."3", UIParent);
+		eaaf3:SetFrameStrata("DIALOG");
+		eaaf3:ClearAllPoints();
+		eaaf3:SetPoint("CENTER", EA_Anchor_Frame2, 100+EA_Position.xOffset, 0+EA_Position.yOffset);
+		eaaf3:SetBackdrop({bgFile = "Interface/Icons/Spell_Nature_Polymorph_Cow"});
 
-        local eaaf3 = CreateFrame("FRAME", "EA_Anchor_Frame3", UIParent);
-        eaaf3:SetFrameStrata("DIALOG");
-        eaaf3:ClearAllPoints();
-        eaaf3:SetPoint("CENTER", EA_Anchor_Frame2, 100+EA_Position.xOffset, 0+EA_Position.yOffset);
-  		eaaf3:SetBackdrop({bgFile = "Interface/Icons/Spell_Nature_Polymorph_Cow"});
-
-        eaaf3.spellName = eaaf3:CreateFontString("EA_Anchor_Frame3_Name","OVERLAY");
+		eaaf3.spellName = eaaf3:CreateFontString(anchorFrameName.."3_Name","OVERLAY");
 		eaaf3.spellName:SetFontObject(ChatFontNormal);
 		eaaf3.spellName:SetPoint("BOTTOM", 0, -15);
 
-        eaaf3.spellTimer = eaaf3:CreateFontString("EA_Anchor_Frame3_Timer","OVERLAY");
+		eaaf3.spellTimer = eaaf3:CreateFontString(anchorFrameName.."3_Timer","OVERLAY");
 		eaaf3.spellTimer:SetFontObject(ChatFontNormal);
 		eaaf3.spellTimer:SetPoint("TOP", 0, 15);
 		
-		eaaf3.spellCounter = eaaf:CreateFontString("EA_Anchor_Frame3_Counter","OVERLAY");
+		-- TODO implement SpellCounter - it was not working before and was generating errors
+		--[[
+		eaaf3.spellCounter = eaaf:CreateFontString(anchorFrameName.."3_Counter","OVERLAY");
 		eaaf3.spellCounter:SetFontObject(ChatFontNormal);
 		-- eaaf3.spellCounter:SetPoint("CENTER", 0, 0);
 		eaaf3.spellCounter:SetPoint("CENTER", 15, 0);
-
+		]]
 
 -- Create primary alert frames
 
-	for index,value in pairsByKeys(EA_Items[EA_playerClass]) do
+	for index,value in pairs(EA_Items) do
 		if (type(value) == "number") then
 			value = tostring(index)
 		elseif (type(value) == "boolean") then
@@ -118,10 +124,13 @@ function EventAlert_CreateFrames()
 		eaf.spellTimer:SetFontObject(ChatFontNormal);
 		eaf.spellTimer:SetPoint("TOP", 0, 15);
 		
+		-- TODO implement SpellCounter - it was not working before and was generating errors
+		--[[
 		eaf.spellCounter = eaaf:CreateFontString("EAFrame_"..index.."_Counter","OVERLAY");
 		eaf.spellCounter:SetFontObject(ChatFontNormal);
 		-- eaf.spellCounter:SetPoint("CENTER", 0, 0);
 		eaf.spellCounter:SetPoint("CENTER", 15, 0);
+		]]
 
         eaf:SetScript("OnEvent", EventAlert_OnEvent);
         -- eaf:SetScript("OnUpdate", EventAlert_OnUpdate);
@@ -130,7 +139,7 @@ function EventAlert_CreateFrames()
 
 -- Create alternate alert frames
 
-	for index,value in pairsByKeys(EA_AltItems[EA_playerClass]) do
+	for index,value in pairs(EA_AltItems) do
 		if (type(value) == "number") then
 			value = tostring(index)
 		elseif (type(value) == "boolean") then
@@ -157,10 +166,13 @@ function EventAlert_CreateFrames()
 		eaf.spellTimer:SetFontObject(ChatFontNormal);
 		eaf.spellTimer:SetPoint("TOP", 0, 15);
 		
+		-- TODO implement SpellCounter - it was not working before and was generating errors
+		--[[
 		eaf.spellCounter = eaaf:CreateFontString("EAFrame_"..index.."_Counter","OVERLAY");
 		eaf.spellCounter:SetFontObject(ChatFontNormal);
 		-- eaf.spellCounter:SetPoint("CENTER", 0, 0);
 		eaf.spellCounter:SetPoint("CENTER", 15, 0);
+		--]]
 
         eaf:SetScript("OnEvent", EventAlert_OnEvent);
         -- eaf:SetScript("OnUpdate", EventAlert_OnUpdate);
@@ -169,7 +181,7 @@ function EventAlert_CreateFrames()
 
 -- Create other alert frames. (Mostly trinket procs)
 
-	for index,value in pairsByKeys(EA_Items[EA_CLASS_OTHER]) do
+	for index,value in pairs(EA_Items) do
 		if (type(value) == "number") then
 			value = tostring(index)
 		elseif (type(value) == "boolean") then
@@ -196,10 +208,13 @@ function EventAlert_CreateFrames()
 		eaf.spellTimer:SetFontObject(ChatFontNormal);
 		eaf.spellTimer:SetPoint("TOP", 0, 15);
 		
+		-- TODO implement SpellCounter - it was not working before and was generating errors
+		--[[
 		eaf.spellCounter = eaaf:CreateFontString("EAFrame_"..index.."_Counter","OVERLAY");
 		eaf.spellCounter:SetFontObject(ChatFontNormal);
 		-- eaf.spellCounter:SetPoint("CENTER", 0, 0);
 		eaf.spellCounter:SetPoint("CENTER", 15, 0);
+		]]
 
         eaf:SetScript("OnEvent", EventAlert_OnEvent);
         -- eaf:SetScript("OnUpdate", EventAlert_OnUpdate);
@@ -210,7 +225,7 @@ function EventAlert_CreateFrames()
 
 	local buttonPositionY = -50;
 
-	for index,value in pairsByKeys(EA_Items[EA_playerClass]) do
+	for index,value in pairs(EA_Items) do
 		if (type(value) == "number") then
 			value = tostring(index)
 		elseif (type(value) == "boolean") then
@@ -219,10 +234,9 @@ function EventAlert_CreateFrames()
 		    else
 			    value = "false"
 		    end
-		  end
+		end
 
     	local EA_name, EA_rank = GetSpellInfo(index);
-
 
         --[[
         	Blizzard isn't consistent with the names and ranks of the procs in relation to the names/ranks of the talents.
@@ -287,14 +301,14 @@ function EventAlert_CreateFrames()
             getglobal(ClassEventCheckButton:GetName().."Text"):SetText(EA_name.." ("..EA_rank..")   ["..index.."]");
         end
 
-        ClassEventCheckButton:SetChecked(EA_Items[EA_playerClass][index]);
-        ClassEventCheckButton:SetChecked(EA_Items[EA_playerClass][index]);
+        ClassEventCheckButton:SetChecked(EA_Items[index]);
+        ClassEventCheckButton:SetChecked(EA_Items[index]);
 
 		local function ClassEventButtonGetChecked()
         	if (ClassEventCheckButton:GetChecked()) then
-           		EA_Items[EA_playerClass][index] = true
+           		EA_Items[index] = true
 			else
-		   		EA_Items[EA_playerClass][index] = false
+		   		EA_Items[index] = false
 			end
         end
         ClassEventCheckButton:RegisterForClicks("AnyUp");
@@ -306,7 +320,7 @@ function EventAlert_CreateFrames()
 
 	-- Alternate Alerts
 	local buttonPositionY = -50;
-	for index,value in pairsByKeys(EA_AltItems[EA_playerClass]) do
+	for index,value in pairs(EA_AltItems) do
 		if (type(value) == "number") then
 			value = tostring(index)
 		elseif (type(value) == "boolean") then
@@ -315,7 +329,7 @@ function EventAlert_CreateFrames()
 		    else
 			    value = "false"
 		    end
-		  end
+		end
 
     	local EA_name, EA_rank = GetSpellInfo(index);
 
@@ -329,14 +343,14 @@ function EventAlert_CreateFrames()
             getglobal(AltAlertCheckButton:GetName().."Text"):SetText(EA_name.." ("..EA_rank..")   ["..index.."]");
         end
 
-        AltAlertCheckButton:SetChecked(EA_AltItems[EA_playerClass][index]);
-        AltAlertCheckButton:SetChecked(EA_AltItems[EA_playerClass][index]);
+        AltAlertCheckButton:SetChecked(EA_AltItems[index]);
+        AltAlertCheckButton:SetChecked(EA_AltItems[index]);
 
 		local function AltAlertButtonGetChecked()
         	if (AltAlertCheckButton:GetChecked()) then
-           		EA_AltItems[EA_playerClass][index] = true
+           		EA_AltItems[index] = true
 			else
-		   		EA_AltItems[EA_playerClass][index] = false
+		   		EA_AltItems[index] = false
 			end
         end
         AltAlertCheckButton:RegisterForClicks("AnyUp");
@@ -344,6 +358,8 @@ function EventAlert_CreateFrames()
 
         buttonPositionY = buttonPositionY - 25;
 	end
+	
+	return eeaf
 end
 
 
@@ -351,7 +367,7 @@ end
 function EventAlert_CreateCustomFrames()
 -- Create custom alert frames
 
-	for index,value in pairsByKeys(EA_CustomItems[EA_playerClass]) do
+	for index,value in pairs(EA_CustomItems) do
 		if (type(value) == "number") then
 			value = tostring(index)
 		elseif (type(value) == "boolean") then
@@ -378,14 +394,15 @@ function EventAlert_CreateCustomFrames()
 		eaf.spellTimer:SetFontObject(ChatFontNormal);
 		eaf.spellTimer:SetPoint("TOP", 0, 15);
 		
+		-- TODO implement SpellCounter - it was not working before and was generating errors
+		--[[
 		eaf.spellCounter = eaaf:CreateFontString("EAFrame_"..index.."_Counter","OVERLAY");
 		eaf.spellCounter:SetFontObject(ChatFontNormal);
 		-- eaf.spellCounter:SetPoint("CENTER", 0, 0);
 		eaf.spellCounter:SetPoint("CENTER", 15, 0);
+		]]
 
         eaf:SetScript("OnEvent", EventAlert_OnEvent);
         -- eaf:SetScript("OnUpdate", EventAlert_OnUpdate);
     end
 end
-
-
