@@ -51,11 +51,41 @@
                     </Anchors>
                 </FontString>
 
+                <FontString inherits="GameFontNormal" text="NOTE: Not all Ascension related buffs/RE">
+                    <Anchors>
+                        <Anchor point="Bottom" relativeTo="Custom_Events_Frame">
+                            <Offset>
+                                <AbsDimension x="0" y="100"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+				
+                <FontString inherits="GameFontNormal" text="procs might appear in the combat log.">
+                    <Anchors>
+                        <Anchor point="Bottom" relativeTo="Custom_Events_Frame">
+                            <Offset>
+                                <AbsDimension x="0" y="90"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+				
+                <FontString inherits="GameFontNormal" text="If you find one such spell, submit a bugreport.">
+                    <Anchors>
+                        <Anchor point="Bottom" relativeTo="Custom_Events_Frame">
+                            <Offset>
+                                <AbsDimension x="0" y="80"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+
                 <FontString inherits="GameFontNormal" text="To look up the spell ID,">
                     <Anchors>
                         <Anchor point="Bottom" relativeTo="Custom_Events_Frame">
                             <Offset>
-                                <AbsDimension x="0" y="65"/>
+                                <AbsDimension x="0" y="45"/>
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -65,7 +95,7 @@
                     <Anchors>
                         <Anchor point="Bottom" relativeTo="Custom_Events_Frame">
                             <Offset>
-                                <AbsDimension x="0" y="45"/>
+                                <AbsDimension x="0" y="35"/>
                             </Offset>
                         </Anchor>
                     </Anchors>
