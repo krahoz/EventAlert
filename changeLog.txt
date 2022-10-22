@@ -1,3 +1,14 @@
+2022-10-23
+- Removed all class dependencies
+- Removed Sacred shield related code
+- Added option to reset the default EventItems in the WTF folder with a click of a button
+- Added option to reset the default Alt EventItems in the WTF folder with a click of a button
+- Added option to Delete all Custom EventItems in the WTF folder with a click of a button
+- Added NOTE that not all Ascension related spells might appear in the Combat log. If you find one, create a bugreport.
+- Temporarely disabled spell stack counter. It was creating LUA errors. Will be fixed in a later version
+- Known issue: When deleting a Custom Event from the spell id list, the deleted item gets stuck in the scroll list. Will be fixed in a later version
+
+---------- OLD -----------
 4.3.6 - Bufgix:  Have I finally fixed the bug with alerts getting suck on the screen?  I think so!  If not, please let me know.  Thanks!
 
 4.3.5 - Bugfix:  Still working at Fingers of Frost.  This re-code changed code to Maelstrom Weapon and Serendipity... so hopefully those aren't bugged now too.
