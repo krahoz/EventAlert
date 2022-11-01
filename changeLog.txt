@@ -1,3 +1,9 @@
+2022-11-01
+- Fixed spell stack counter
+- Fixed CustomEvent spell selector not clearing after deleting an item
+- Fixed the Class/Alternate checklist display
+- Removed/Refactored some old code
+
 2022-10-23
 - Removed all class dependencies
 - Removed Sacred shield related code
