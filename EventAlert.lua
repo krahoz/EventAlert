@@ -72,39 +72,19 @@ function EventAlert_OnEvent(event)
 	            end
 				
 				if (EA_Items[arg9] or EA_CustomItems[arg9]) then
-					-- TODO add more options for number of stacks
-					-- Serendipity
-					--[[
-					if (arg9 == 63731 or arg9 == 63734 or arg9 == 63734) then
-						if (arg13 == 3) then
-							table.insert(EA_TempBuffsTable, arg9);
-							EventAlert_PositionFrames();
-							EventAlert_DoAlert();
-						end
-					-- Maelstrom Weapon
-					elseif (arg9 == 53817) then
-						if (arg13 == 5) then
-							table.insert(EA_TempBuffsTable, arg9);
-							EventAlert_PositionFrames();
-							EventAlert_DoAlert();
-						end
-					-- All other spells
+					local buff = table.foreach(EA_TempBuffsTable, function(i, v) if v==arg9 then return v end end)
+					if buff == nil then
+						print("insert buff "..arg9)
+						table.insert(EA_TempBuffsTable, arg9);
+					elseif EA_TempBuffsCountTable[arg9] ~= nil then
+						print("update count "..arg13)
+						EA_TempBuffsCountTable[arg9].count = arg13
 					else
-					--]]
-						local buff = table.foreach(EA_TempBuffsTable, function(i, v) if v==arg9 then return v end end)
-						if buff == nil then
-							print("insert buff "..arg9)
-							table.insert(EA_TempBuffsTable, arg9);
-						elseif EA_TempBuffsCountTable[arg9] ~= nil then
-							print("update count "..arg13)
-							EA_TempBuffsCountTable[arg9].count = arg13
-						else
-							print("insert count "..arg13)
-							EA_TempBuffsCountTable[arg9] = { count = arg13 }
-						end
-						EventAlert_PositionFrames();
-						EventAlert_DoAlert();
-					--end
+						print("insert count "..arg13)
+						EA_TempBuffsCountTable[arg9] = { count = arg13 }
+					end
+					EventAlert_PositionFrames();
+					EventAlert_DoAlert();
                 end
     	   	end
         end
