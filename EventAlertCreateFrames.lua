@@ -197,9 +197,12 @@ function EventAlert_CreateFrames()
     end
 
 
--- Create Class Alert menu buttons, etc
-
-	local buttonPositionY = -50;
+	-- Create Class Alert menu buttons, etc
+	local offsetIncrementX = 200
+	local offsetIncrementY = 20
+	
+	local buttonOffsetX = 20
+	local buttonOffsetY = 0
 
 	for index,value in pairs(EA_Items) do
 		if (type(value) == "number") then
@@ -211,6 +214,13 @@ function EventAlert_CreateFrames()
 			    value = "false"
 		    end
 		end
+
+		if buttonOffsetY ~= 0 and buttonOffsetY % 640 == 0 then
+			buttonOffsetY = 0
+			buttonOffsetX = buttonOffsetX + offsetIncrementX
+		end
+		
+		buttonOffsetY = buttonOffsetY - offsetIncrementY
 
     	local EA_name, EA_rank = GetSpellInfo(index);
 
@@ -267,9 +277,8 @@ function EventAlert_CreateFrames()
     	    EA_name = EA_name11;
         end
 
-
         local ClassEventCheckButton = CreateFrame("CheckButton", index, Class_Events_Frame, "OptionsCheckButtonTemplate");
-		ClassEventCheckButton:SetPoint("TOPLEFT",20,buttonPositionY);
+		ClassEventCheckButton:SetPoint("TOPLEFT", buttonOffsetX, buttonOffsetY);
 
         if (EA_rank == "") then
             getglobal(ClassEventCheckButton:GetName().."Text"):SetText(EA_name.."   ["..index.."]");
@@ -289,13 +298,16 @@ function EventAlert_CreateFrames()
         end
         ClassEventCheckButton:RegisterForClicks("AnyUp");
 		ClassEventCheckButton:SetScript("OnClick", ClassEventButtonGetChecked)
-
-        buttonPositionY = buttonPositionY - 25;
 	end
 
 
 	-- Alternate Alerts
-	local buttonPositionY = -50;
+	local offsetIncrementX = 200
+	local offsetIncrementY = 20
+	
+	local buttonOffsetX = 20
+	local buttonOffsetY = 0
+	
 	for index,value in pairs(EA_AltItems) do
 		if (type(value) == "number") then
 			value = tostring(index)
@@ -307,11 +319,12 @@ function EventAlert_CreateFrames()
 		    end
 		end
 
+        buttonOffsetY = buttonOffsetY - offsetIncrementY
+
     	local EA_name, EA_rank = GetSpellInfo(index);
 
-
         local AltAlertCheckButton = CreateFrame("CheckButton", index, Alt_Alerts_Frame, "OptionsCheckButtonTemplate");
-		AltAlertCheckButton:SetPoint("TOPLEFT",20,buttonPositionY);
+		AltAlertCheckButton:SetPoint("TOPLEFT", buttonOffsetX, buttonOffsetY);
 
         if (EA_rank == "") then
             getglobal(AltAlertCheckButton:GetName().."Text"):SetText(EA_name.."   ["..index.."]");
@@ -331,8 +344,6 @@ function EventAlert_CreateFrames()
         end
         AltAlertCheckButton:RegisterForClicks("AnyUp");
 		AltAlertCheckButton:SetScript("OnClick", AltAlertButtonGetChecked)
-
-        buttonPositionY = buttonPositionY - 25;
 	end
 	
 	return eeaf

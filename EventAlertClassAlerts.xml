@@ -5,7 +5,7 @@
     <Frame name="Class_Events_Frame" toplevel="true" frameStrata="HIGH" movable="true" enableMouse="true" hidden="true" parent="EA_Options_Frame" enableKeyboard="true">
 
         <Size>
-            <AbsDimension x="325" y="500"/>
+            <AbsDimension x="650" y="700"/>
         </Size>
 
         <Anchors>
@@ -46,36 +46,6 @@
                         <Anchor point="TOP" relativeTo="Class_Events_Frame_Header">
                             <Offset>
                                 <AbsDimension x="0" y="-14"/>
-                            </Offset>
-                        </Anchor>
-                    </Anchors>
-                </FontString>
-
-                <FontString inherits="GameFontNormal" text="Spells are sorted by spell ID.">
-                    <Anchors>
-                        <Anchor point="Bottom" relativeTo="Class_Events_Frame">
-                            <Offset>
-                                <AbsDimension x="0" y="85"/>
-                            </Offset>
-                        </Anchor>
-                    </Anchors>
-                </FontString>
-
-                <FontString inherits="GameFontNormal" text="Spell IDs are listed in brackets.">
-                    <Anchors>
-                        <Anchor point="Bottom" relativeTo="Class_Events_Frame">
-                            <Offset>
-                                <AbsDimension x="0" y="65"/>
-                            </Offset>
-                        </Anchor>
-                    </Anchors>
-                </FontString>
-
-                <FontString inherits="GameFontNormal" text="To look up the spellID, copy the following:">
-                    <Anchors>
-                        <Anchor point="Bottom" relativeTo="Class_Events_Frame">
-                            <Offset>
-                                <AbsDimension x="0" y="35"/>
                             </Offset>
                         </Anchor>
                     </Anchors>
