@@ -51,6 +51,7 @@
                     </Anchors>
                 </FontString>
 
+				<!-- #REGION: Notes at the bottom of the frame. -->
                 <FontString inherits="GameFontNormal" text="NOTE: Not all Ascension related buffs/RE">
                     <Anchors>
                         <Anchor point="Bottom" relativeTo="Custom_Events_Frame">
@@ -111,6 +112,7 @@
                         </Anchor>
                     </Anchors>
                 </FontString>
+				<!-- #ENDREGION: Notes at the bottom of the frame. -->
             </Layer>
         </Layers>
 

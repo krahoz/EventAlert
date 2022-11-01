@@ -86,6 +86,7 @@ function EventAlert_CustomAlert_DeleteSetting()
 		if (index == selectedValue) then
 		 	EA_CustomItems[selectedValue] = nil;
           	DEFAULT_CHAT_FRAME:AddMessage("Removed "..EA_name.." ["..index.."] from EventAlert.");
+			UIDropDownMenu_ClearAll(Custom_Events_Frame_DeleteCustom_Box)
         end
     end
 end

@@ -16,6 +16,7 @@ function EventAlert_OnLoad(self)
     SLASH_EVENTALERT2 = "/ea";
 
     EA_TempBuffsTable = { };
+	EA_TempBuffsCountTable = { };
     EA_PreLoadAlts = { };
     EA_PreLoadComplete = 0;
 
@@ -73,6 +74,7 @@ function EventAlert_OnEvent(event)
 				if (EA_Items[arg9] or EA_CustomItems[arg9]) then
 					-- TODO add more options for number of stacks
 					-- Serendipity
+					--[[
 					if (arg9 == 63731 or arg9 == 63734 or arg9 == 63734) then
 						if (arg13 == 3) then
 							table.insert(EA_TempBuffsTable, arg9);
@@ -88,10 +90,21 @@ function EventAlert_OnEvent(event)
 						end
 					-- All other spells
 					else
-						table.insert(EA_TempBuffsTable, arg9);
+					--]]
+						local buff = table.foreach(EA_TempBuffsTable, function(i, v) if v==arg9 then return v end end)
+						if buff == nil then
+							print("insert buff "..arg9)
+							table.insert(EA_TempBuffsTable, arg9);
+						elseif EA_TempBuffsCountTable[arg9] ~= nil then
+							print("update count "..arg13)
+							EA_TempBuffsCountTable[arg9].count = arg13
+						else
+							print("insert count "..arg13)
+							EA_TempBuffsCountTable[arg9] = { count = arg13 }
+						end
 						EventAlert_PositionFrames();
 						EventAlert_DoAlert();
-					end
+					--end
                 end
     	   	end
         end
@@ -214,37 +227,31 @@ function EventAlert_OnUpdate()
                             eaf.spellTimer:ClearAllPoints();
                             eaf.spellTimer:SetPoint("CENTER", 0, 0);
 							
-							-- TODO implement SpellCounter - it was not working before and was generating errors
-							--[[
 							eaf.spellCounter:ClearAllPoints();
 							eaf.spellCounter:SetPoint("CENTER", 0, 0);
-							]]
                         else
                             timerFontSize = 18;
                             eaf.spellTimer:ClearAllPoints();
                             eaf.spellTimer:SetPoint("TOP", 0, 20);
 							
-							-- TODO implement SpellCounter - it was not working before and was generating errors
-							--[[
 							eaf.spellCounter:ClearAllPoints();
-							eaf.spellCounter:SetPoint("CENTER", 20, 0);
-							]]
+							eaf.spellCounter:SetPoint("RIGHT", 20, 0);
                         end
 
                         eaf.spellTimer:SetFont("Fonts\\\FRIZQT__.TTF", timerFontSize, "OUTLINE");
                         eaf.spellTimer:SetFormattedText("%d", EA_timeLeft);
 						
-						-- TODO implement SpellCounter - it was not working before and was generating errors
-						--[[
                         eaf.spellCounter:SetFont("Fonts\\\FRIZQT__.TTF", timerFontSize, "OUTLINE");
-                        eaf.spellCounter:SetFormattedText("%d", EA_auraCount);
-						]]
+						if EA_auraCount > 1 then
+							eaf.spellCounter:SetFormattedText("%d", EA_auraCount);
+						else
+							eaf.spellCounter:SetText("");
+						end
                     end
                 end
             else
             	eaf.spellTimer:SetText("");
-				-- TODO implement SpellCounter - it was not working before and was generating errors
-            	--eaf.spellCounter:SetText("");
+            	eaf.spellCounter:SetText("");
             end
         end
     end
@@ -273,9 +280,11 @@ function EventAlert_PositionFrames(event)
         for i,v in ipairs(EA_TempBuffsTable) do
             local eaf = _G["EAFrame_"..v];
 
+			-- Eclipse Solar
             if (v == 48517) then
             	_, _, gsiIcon, _, _, _, _, _, _ = GetSpellInfo(5176);
 				gsiName, _, _, _, _, _, _, _, _ = GetSpellInfo(v);
+			-- Eclipse Lunar
             elseif (v == 48518) then
 				_, _, gsiIcon, _, _, _, _, _, _ = GetSpellInfo(2912);
 				gsiName, _, _, _, _, _, _, _, _ = GetSpellInfo(v);

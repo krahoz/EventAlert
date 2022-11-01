@@ -19,15 +19,11 @@ function EventAlert_CreateFrames()
 
 		eaaf.spellTimer = eaaf:CreateFontString(anchorFrameName.."_Timer","OVERLAY");
 		eaaf.spellTimer:SetFontObject(ChatFontNormal);
-		eaaf.spellTimer:SetPoint("TOP", 0, 15);
+		eaaf.spellTimer:SetPoint("TOP", 0, 20);
 		
-		-- TODO implement SpellCounter - it was not working before and was generating errors
-		--[[
 		eaaf.spellCounter = eaaf:CreateFontString(anchorFrameName.."_Counter","OVERLAY");
 		eaaf.spellCounter:SetFontObject(ChatFontNormal);
-		-- eaaf.spellCounter:SetPoint("CENTER", 0, 0);
-		eaaf.spellCounter:SetPoint("CENTER", 15, 0);
-		]]
+		eaaf.spellCounter:SetPoint("RIGHT", 20, 0);
 
 		eaaf:SetBackdrop({bgFile = "Interface/Icons/Spell_Nature_Polymorph_Cow"});
 
@@ -63,15 +59,11 @@ function EventAlert_CreateFrames()
 
 		eaaf2.spellTimer = eaaf2:CreateFontString(anchorFrameName.."2_Timer","OVERLAY");
 		eaaf2.spellTimer:SetFontObject(ChatFontNormal);
-		eaaf2.spellTimer:SetPoint("TOP", 0, 15);
+		eaaf2.spellTimer:SetPoint("TOP", 0, 20);
 		
-		-- TODO implement SpellCounter - it was not working before and was generating errors
-		--[[
-		eaaf2.spellCounter = eaaf:CreateFontString(anchorFrameName.."2_Counter","OVERLAY");
+		eaaf2.spellCounter = eaaf2:CreateFontString(anchorFrameName.."2_Counter","OVERLAY");
 		eaaf2.spellCounter:SetFontObject(ChatFontNormal);
-		-- eaaf2.spellCounter:SetPoint("CENTER", 0, 0);
-		eaaf2.spellCounter:SetPoint("CENTER", 15, 0);
-		]]
+		eaaf2.spellCounter:SetPoint("RIGHT", 20, 0);
 
 		local eaaf3 = CreateFrame("FRAME", anchorFrameName.."3", UIParent);
 		eaaf3:SetFrameStrata("DIALOG");
@@ -85,15 +77,11 @@ function EventAlert_CreateFrames()
 
 		eaaf3.spellTimer = eaaf3:CreateFontString(anchorFrameName.."3_Timer","OVERLAY");
 		eaaf3.spellTimer:SetFontObject(ChatFontNormal);
-		eaaf3.spellTimer:SetPoint("TOP", 0, 15);
+		eaaf3.spellTimer:SetPoint("TOP", 0, 20);
 		
-		-- TODO implement SpellCounter - it was not working before and was generating errors
-		--[[
-		eaaf3.spellCounter = eaaf:CreateFontString(anchorFrameName.."3_Counter","OVERLAY");
+		eaaf3.spellCounter = eaaf3:CreateFontString(anchorFrameName.."3_Counter","OVERLAY");
 		eaaf3.spellCounter:SetFontObject(ChatFontNormal);
-		-- eaaf3.spellCounter:SetPoint("CENTER", 0, 0);
-		eaaf3.spellCounter:SetPoint("CENTER", 15, 0);
-		]]
+		eaaf3.spellCounter:SetPoint("RIGHT", 20, 0);
 
 -- Create primary alert frames
 
@@ -122,15 +110,11 @@ function EventAlert_CreateFrames()
 
 		eaf.spellTimer = eaf:CreateFontString("EAFrame_"..index.."_Timer","OVERLAY");
 		eaf.spellTimer:SetFontObject(ChatFontNormal);
-		eaf.spellTimer:SetPoint("TOP", 0, 15);
+		eaf.spellTimer:SetPoint("TOP", 0, 20);
 		
-		-- TODO implement SpellCounter - it was not working before and was generating errors
-		--[[
-		eaf.spellCounter = eaaf:CreateFontString("EAFrame_"..index.."_Counter","OVERLAY");
+		eaf.spellCounter = eaf:CreateFontString("EAFrame_"..index.."_Counter","OVERLAY");
 		eaf.spellCounter:SetFontObject(ChatFontNormal);
-		-- eaf.spellCounter:SetPoint("CENTER", 0, 0);
-		eaf.spellCounter:SetPoint("CENTER", 15, 0);
-		]]
+		eaf.spellCounter:SetPoint("RIGHT", 20, 0);
 
         eaf:SetScript("OnEvent", EventAlert_OnEvent);
         -- eaf:SetScript("OnUpdate", EventAlert_OnUpdate);
@@ -164,15 +148,11 @@ function EventAlert_CreateFrames()
 
 		eaf.spellTimer = eaf:CreateFontString("EAFrame_"..index.."_Timer","OVERLAY");
 		eaf.spellTimer:SetFontObject(ChatFontNormal);
-		eaf.spellTimer:SetPoint("TOP", 0, 15);
+		eaf.spellTimer:SetPoint("TOP", 0, 20);
 		
-		-- TODO implement SpellCounter - it was not working before and was generating errors
-		--[[
-		eaf.spellCounter = eaaf:CreateFontString("EAFrame_"..index.."_Counter","OVERLAY");
+		eaf.spellCounter = eaf:CreateFontString("EAFrame_"..index.."_Counter","OVERLAY");
 		eaf.spellCounter:SetFontObject(ChatFontNormal);
-		-- eaf.spellCounter:SetPoint("CENTER", 0, 0);
-		eaf.spellCounter:SetPoint("CENTER", 15, 0);
-		--]]
+		eaf.spellCounter:SetPoint("RIGHT", 20, 0);
 
         eaf:SetScript("OnEvent", EventAlert_OnEvent);
         -- eaf:SetScript("OnUpdate", EventAlert_OnUpdate);
@@ -206,15 +186,11 @@ function EventAlert_CreateFrames()
 
 		eaf.spellTimer = eaf:CreateFontString("EAFrame_"..index.."_Timer","OVERLAY");
 		eaf.spellTimer:SetFontObject(ChatFontNormal);
-		eaf.spellTimer:SetPoint("TOP", 0, 15);
+		eaf.spellTimer:SetPoint("TOP", 0, 20);
 		
-		-- TODO implement SpellCounter - it was not working before and was generating errors
-		--[[
-		eaf.spellCounter = eaaf:CreateFontString("EAFrame_"..index.."_Counter","OVERLAY");
+		eaf.spellCounter = eaf:CreateFontString("EAFrame_"..index.."_Counter","OVERLAY");
 		eaf.spellCounter:SetFontObject(ChatFontNormal);
-		-- eaf.spellCounter:SetPoint("CENTER", 0, 0);
-		eaf.spellCounter:SetPoint("CENTER", 15, 0);
-		]]
+		eaf.spellCounter:SetPoint("RIGHT", 20, 0);
 
         eaf:SetScript("OnEvent", EventAlert_OnEvent);
         -- eaf:SetScript("OnUpdate", EventAlert_OnUpdate);
@@ -392,15 +368,11 @@ function EventAlert_CreateCustomFrames()
 
 		eaf.spellTimer = eaf:CreateFontString("EAFrame_"..index.."_Timer","OVERLAY");
 		eaf.spellTimer:SetFontObject(ChatFontNormal);
-		eaf.spellTimer:SetPoint("TOP", 0, 15);
+		eaf.spellTimer:SetPoint("TOP", 0, 20);
 		
-		-- TODO implement SpellCounter - it was not working before and was generating errors
-		--[[
-		eaf.spellCounter = eaaf:CreateFontString("EAFrame_"..index.."_Counter","OVERLAY");
+		eaf.spellCounter = eaf:CreateFontString("EAFrame_"..index.."_Counter","OVERLAY");
 		eaf.spellCounter:SetFontObject(ChatFontNormal);
-		-- eaf.spellCounter:SetPoint("CENTER", 0, 0);
-		eaf.spellCounter:SetPoint("CENTER", 15, 0);
-		]]
+		eaf.spellCounter:SetPoint("RIGHT", 20, 0);
 
         eaf:SetScript("OnEvent", EventAlert_OnEvent);
         -- eaf:SetScript("OnUpdate", EventAlert_OnUpdate);
