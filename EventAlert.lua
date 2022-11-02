@@ -16,7 +16,6 @@ function EventAlert_OnLoad(self)
     SLASH_EVENTALERT2 = "/ea";
 
     EA_TempBuffsTable = { };
-	EA_TempBuffsCountTable = { };
     EA_PreLoadAlts = { };
     EA_PreLoadComplete = 0;
 
@@ -72,17 +71,7 @@ function EventAlert_OnEvent(event)
 	            end
 				
 				if (EA_Items[arg9] or EA_CustomItems[arg9]) then
-					local buff = table.foreach(EA_TempBuffsTable, function(i, v) if v==arg9 then return v end end)
-					if buff == nil then
-						print("insert buff "..arg9)
-						table.insert(EA_TempBuffsTable, arg9);
-					elseif EA_TempBuffsCountTable[arg9] ~= nil then
-						print("update count "..arg13)
-						EA_TempBuffsCountTable[arg9].count = arg13
-					else
-						print("insert count "..arg13)
-						EA_TempBuffsCountTable[arg9] = { count = arg13 }
-					end
+					table.insert(EA_TempBuffsTable, arg9);
 					EventAlert_PositionFrames();
 					EventAlert_DoAlert();
                 end
